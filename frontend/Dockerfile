@@ -1,5 +1,5 @@
 # Build stage
-FROM node:20-alpine AS builder
+FROM node:26-alpine AS builder
 
 WORKDIR /app
 
@@ -16,7 +16,7 @@ ENV API_GATEWAY_URL=http://api-gateway:8000
 RUN npm run build
 
 # Production stage
-FROM node:20-alpine AS runner
+FROM node:26-alpine AS runner
 
 WORKDIR /app
 
