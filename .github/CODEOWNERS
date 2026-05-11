@@ -1,0 +1,42 @@
+# ──────────────────────────────────────────────────────────
+# 👥 CODEOWNERS — NexStore
+# ──────────────────────────────────────────────────────────
+# These owners will be automatically requested for review
+# when a pull request modifies files matching the patterns.
+# Learn more: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# ── Global Fallback ───────────────────────────────────────
+*                           @nexstore/core-team
+
+# ── Frontend ──────────────────────────────────────────────
+/frontend/                  @nexstore/frontend-team
+/frontend/src/components/   @nexstore/frontend-team @nexstore/design-system
+/frontend/src/lib/          @nexstore/frontend-team
+
+# ── Backend Services ──────────────────────────────────────
+/backend/api-gateway/       @nexstore/platform-team
+/backend/user-service/      @nexstore/backend-team @nexstore/security-team
+/backend/product-service/   @nexstore/backend-team
+/backend/cart-service/      @nexstore/backend-team
+/backend/order-service/     @nexstore/backend-team
+/backend/payment-service/   @nexstore/backend-team @nexstore/security-team
+/backend/notification-service/ @nexstore/backend-team
+
+# ── Infrastructure ────────────────────────────────────────
+/infra/                     @nexstore/platform-team @nexstore/security-team
+/docker-compose.yml         @nexstore/platform-team
+**/Dockerfile               @nexstore/platform-team
+
+# ── CI/CD ─────────────────────────────────────────────────
+/.github/                   @nexstore/platform-team
+/.github/workflows/         @nexstore/platform-team @nexstore/security-team
+
+# ── Security-Sensitive ────────────────────────────────────
+SECURITY.md                 @nexstore/security-team
+**/security.py              @nexstore/security-team
+**/auth*.py                 @nexstore/security-team
+
+# ── Documentation ─────────────────────────────────────────
+/docs/                      @nexstore/core-team
+README.md                   @nexstore/core-team
+CONTRIBUTING.md             @nexstore/core-team

@@ -1,0 +1,136 @@
+# Shared Configuration
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ecommerce-common-config
+  namespace: ecommerce
+data:
+  # Common environment variables
+  LOG_LEVEL: "INFO"
+  APP_ENV: "production"
+  # Service URLs for API Gateway routing
+  USER_SERVICE_HOST: "user-service"
+  PRODUCT_SERVICE_HOST: "product-service"
+  CART_SERVICE_HOST: "cart-service"
+  ORDER_SERVICE_HOST: "order-service"
+  PAYMENT_SERVICE_HOST: "payment-service"
+  NOTIFICATION_SERVICE_HOST: "notification-service"
+  API_GATEWAY_PORT: "8000"
+  API_GATEWAY_HOST: "api-gateway"
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: user-service-config
+  namespace: ecommerce
+data:
+  DATABASE_HOST: "postgres"
+  DATABASE_PORT: "5432"
+  DATABASE_NAME: "users_db"
+  DATABASE_USER: "ecommerce_user"
+  REDIS_HOST: "redis"
+  REDIS_PORT: "6379"
+  RABBITMQ_HOST: "rabbitmq"
+  RABBITMQ_PORT: "5672"
+  SECRET_KEY: "change-me-in-production"
+  SERVICE_PORT: "8000"
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: product-service-config
+  namespace: ecommerce
+data:
+  DATABASE_HOST: "postgres"
+  DATABASE_PORT: "5432"
+  DATABASE_NAME: "products_db"
+  DATABASE_USER: "ecommerce_user"
+  REDIS_HOST: "redis"
+  REDIS_PORT: "6379"
+  SERVICE_PORT: "8000"
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cart-service-config
+  namespace: ecommerce
+data:
+  REDIS_HOST: "redis"
+  REDIS_PORT: "6379"
+  API_GATEWAY_URL: "http://api-gateway:8000"
+  SERVICE_PORT: "8000"
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: order-service-config
+  namespace: ecommerce
+data:
+  DATABASE_HOST: "postgres"
+  DATABASE_PORT: "5432"
+  DATABASE_NAME: "orders_db"
+  DATABASE_USER: "ecommerce_user"
+  REDIS_HOST: "redis"
+  REDIS_PORT: "6379"
+  RABBITMQ_HOST: "rabbitmq"
+  RABBITMQ_PORT: "5672"
+  API_GATEWAY_URL: "http://api-gateway:8000"
+  SERVICE_PORT: "8000"
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: payment-service-config
+  namespace: ecommerce
+data:
+  DATABASE_HOST: "postgres"
+  DATABASE_PORT: "5432"
+  DATABASE_NAME: "payments_db"
+  DATABASE_USER: "ecommerce_user"
+  API_GATEWAY_URL: "http://api-gateway:8000"
+  SERVICE_PORT: "8000"
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: notification-service-config
+  namespace: ecommerce
+data:
+  RABBITMQ_HOST: "rabbitmq"
+  RABBITMQ_PORT: "5672"
+  SERVICE_PORT: "8000"
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: api-gateway-config
+  namespace: ecommerce
+data:
+  USER_SERVICE_URL: "http://user-service:8000"
+  PRODUCT_SERVICE_URL: "http://product-service:8000"
+  CART_SERVICE_URL: "http://cart-service:8000"
+  ORDER_SERVICE_URL: "http://order-service:8000"
+  PAYMENT_SERVICE_URL: "http://payment-service:8000"
+  NOTIFICATION_SERVICE_URL: "http://notification-service:8000"
+  SECRET_KEY: "change-me-in-production"
+  SERVICE_PORT: "8000"
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: frontend-config
+  namespace: ecommerce
+data:
+  NEXT_PUBLIC_API_URL: "http://api-gateway:8000"
+  NEXT_PUBLIC_APP_NAME: "NexStore"
+  NEXT_PUBLIC_APP_URL: "https://ecommerce.example.com"
+  PORT: "3000"

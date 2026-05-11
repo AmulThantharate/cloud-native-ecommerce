@@ -1,0 +1,90 @@
+# ──────────────────────────────────────────────────────────
+# 🤖 Dependabot — Automated Dependency Updates
+# ──────────────────────────────────────────────────────────
+version: 2
+updates:
+  # ── Python Backend Services ─────────────────────────────
+  - package-ecosystem: "pip"
+    directory: "/backend/api-gateway"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    labels: ["dependencies", "python"]
+    reviewers: ["nexstore/backend-team"]
+    commit-message:
+      prefix: "chore(deps):"
+
+  - package-ecosystem: "pip"
+    directory: "/backend/user-service"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    labels: ["dependencies", "python"]
+
+  - package-ecosystem: "pip"
+    directory: "/backend/product-service"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    labels: ["dependencies", "python"]
+
+  - package-ecosystem: "pip"
+    directory: "/backend/cart-service"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    labels: ["dependencies", "python"]
+
+  - package-ecosystem: "pip"
+    directory: "/backend/order-service"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    labels: ["dependencies", "python"]
+
+  - package-ecosystem: "pip"
+    directory: "/backend/payment-service"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    labels: ["dependencies", "python"]
+
+  - package-ecosystem: "pip"
+    directory: "/backend/notification-service"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    labels: ["dependencies", "python"]
+
+  # ── Frontend (Node.js) ─────────────────────────────────
+  - package-ecosystem: "npm"
+    directory: "/frontend"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    labels: ["dependencies", "javascript"]
+    reviewers: ["nexstore/frontend-team"]
+    commit-message:
+      prefix: "chore(deps):"
+
+  # ── GitHub Actions ──────────────────────────────────────
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    labels: ["dependencies", "ci"]
+    commit-message:
+      prefix: "ci(deps):"
+
+  # ── Docker ──────────────────────────────────────────────
+  - package-ecosystem: "docker"
+    directory: "/frontend"
+    schedule:
+      interval: "monthly"
+    labels: ["dependencies", "docker"]
+
+  - package-ecosystem: "docker"
+    directory: "/backend/api-gateway"
+    schedule:
+      interval: "monthly"
+    labels: ["dependencies", "docker"]

@@ -1,0 +1,18 @@
+# Kubernetes Namespaces
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ecommerce
+  labels:
+    name: ecommerce
+    managed-by: kubectl
+
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ecommerce-infrastructure
+  labels:
+    name: ecommerce-infrastructure
+    managed-by: kubectl
