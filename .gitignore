@@ -74,3 +74,4 @@ Desktop.ini
 *.cert
 *.secret
 prompt.txt
+.jenkins-pipeline-scripted.groovy
