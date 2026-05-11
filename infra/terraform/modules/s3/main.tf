@@ -6,6 +6,13 @@ resource "aws_s3_bucket" "assets" {
   }
 }
 
+resource "aws_s3_bucket_ownership_controls" "assets" {
+  bucket = aws_s3_bucket.assets.id
+  rule {
+    object_ownership = "BucketOwnerPreferred"
+  }
+}
+
 resource "aws_s3_bucket_public_access_block" "assets" {
   bucket = aws_s3_bucket.assets.id
 
@@ -29,4 +36,6 @@ resource "aws_s3_bucket_policy" "public_read" {
       },
     ]
   })
+
+  depends_on = [aws_s3_bucket_public_access_block.assets]
 }
