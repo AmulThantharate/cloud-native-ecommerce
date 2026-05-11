@@ -32,7 +32,7 @@ resource "aws_security_group" "rds" {
 }
 
 resource "aws_db_instance" "main" {
-  identifier           = "${var.project_name}-db-${var.environment}"
+  identifier           = lower("${var.project_name}-db-${var.environment}")
   engine               = "postgres"
   engine_version       = "16.1"
   instance_class       = "db.t3.micro"

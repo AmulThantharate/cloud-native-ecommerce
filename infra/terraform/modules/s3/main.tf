@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "assets" {
-  bucket = "${var.project_name}-assets-${var.environment}"
+  bucket = lower("${var.project_name}-assets-${var.environment}")
 
   tags = {
     Name = "${var.project_name}-assets-${var.environment}"
@@ -37,5 +37,8 @@ resource "aws_s3_bucket_policy" "public_read" {
     ]
   })
 
-  depends_on = [aws_s3_bucket_public_access_block.assets]
+  depends_on = [
+    aws_s3_bucket_public_access_block.assets,
+    aws_s3_bucket_ownership_controls.assets
+  ]
 }

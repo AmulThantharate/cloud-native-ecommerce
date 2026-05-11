@@ -1,4 +1,6 @@
-data "aws_availability_zones" "available" {}
+data "aws_availability_zones" "available" {
+  state = "available"
+}
 
 resource "aws_vpc" "main" {
   cidr_block           = var.vpc_cidr
@@ -6,7 +8,7 @@ resource "aws_vpc" "main" {
   enable_dns_support   = true
 
   tags = {
-    Name = "${var.project_name}-vpc-${var.environment}"
+    Name = lower("${var.project_name}-vpc-${var.environment}")
   }
 }
 
@@ -18,7 +20,7 @@ resource "aws_subnet" "public" {
   map_public_ip_on_launch = true
 
   tags = {
-    Name                                            = "${var.project_name}-public-${count.index}-${var.environment}"
+    Name                                            = lower("${var.project_name}-public-${count.index}-${var.environment}")
     "kubernetes.io/role/elb"                        = "1"
     "kubernetes.io/cluster/${var.project_name}-cluster-${var.environment}" = "shared"
   }
@@ -31,7 +33,7 @@ resource "aws_subnet" "private" {
   availability_zone = data.aws_availability_zones.available.names[count.index]
 
   tags = {
-    Name                                            = "${var.project_name}-private-${count.index}-${var.environment}"
+    Name                                            = lower("${var.project_name}-private-${count.index}-${var.environment}")
     "kubernetes.io/role/internal-elb"               = "1"
     "kubernetes.io/cluster/${var.project_name}-cluster-${var.environment}" = "shared"
   }
