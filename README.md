@@ -95,18 +95,18 @@ NexStore is a **cloud-native e-commerce platform** built with microservices arch
 
 ## 🛠️ Tech Stack
 
-| Layer | Technology | Purpose |
-|-------|-----------|---------|
-| **Frontend** | Next.js 14, React 18, Tailwind CSS | App Router, SSR, responsive UI |
-| **UI** | ShadCN UI, Framer Motion, Zustand | Components, animations, state |
-| **Backend** | FastAPI, Python 3.11 | High-performance async API |
-| **Database** | PostgreSQL 16 | Relational data per service |
-| **Cache** | Redis 7 | Product cache, cart storage |
-| **Messaging** | RabbitMQ | Async event processing |
-| **Auth** | JWT + bcrypt | Token-based authentication |
-| **Container** | Docker, Docker Compose | Local dev & deployment |
-| **CI/CD** | GitHub Actions | Lint, test, build, release |
-| **Security** | Trivy, CodeQL, Gitleaks | Container + code scanning |
+| Layer         | Technology                         | Purpose                        |
+| ------------- | ---------------------------------- | ------------------------------ |
+| **Frontend**  | Next.js 14, React 18, Tailwind CSS | App Router, SSR, responsive UI |
+| **UI**        | ShadCN UI, Framer Motion, Zustand  | Components, animations, state  |
+| **Backend**   | FastAPI, Python 3.11               | High-performance async API     |
+| **Database**  | PostgreSQL 16                      | Relational data per service    |
+| **Cache**     | Redis 7                            | Product cache, cart storage    |
+| **Messaging** | RabbitMQ                           | Async event processing         |
+| **Auth**      | JWT + bcrypt                       | Token-based authentication     |
+| **Container** | Docker, Docker Compose             | Local dev & deployment         |
+| **CI/CD**     | GitHub Actions                     | Lint, test, build, release     |
+| **Security**  | Trivy, CodeQL, Gitleaks            | Container + code scanning      |
 
 ---
 
@@ -122,7 +122,7 @@ NexStore is a **cloud-native e-commerce platform** built with microservices arch
 ### 1. Clone & Configure
 
 ```bash
-git clone https://github.com/nexstore/cloud-native-ecommerce.git
+git clone https://github.com/AmulThantharate/cloud-native-ecommerce.git
 cd cloud-native-ecommerce
 cp .env.example .env
 ```
@@ -146,12 +146,12 @@ make seed
 
 ### 4. Open the App
 
-| Service | URL |
-|---------|-----|
-| 🌐 Frontend | http://localhost:3000 |
-| 📡 API Gateway | http://localhost:8000 |
-| 📖 API Docs | http://localhost:8000/docs |
-| 🐰 RabbitMQ | http://localhost:15672 (guest/guest) |
+| Service        | URL                                  |
+| -------------- | ------------------------------------ |
+| 🌐 Frontend    | http://localhost:3000                |
+| 📡 API Gateway | http://localhost:8000                |
+| 📖 API Docs    | http://localhost:8000/docs           |
+| 🐰 RabbitMQ    | http://localhost:15672 (guest/guest) |
 
 ### 5. Verify Health
 
@@ -228,47 +228,47 @@ cloud-native-ecommerce/
 
 ### Service Endpoints
 
-| Service | Port | Health | Description |
-|---------|------|--------|-------------|
-| 🔀 API Gateway | 8000 | `/health` | Request routing, auth, rate limiting |
-| 👤 User Service | 8001 | `/health` | Registration, login, profiles |
-| 📦 Product Service | 8002 | `/health` | Catalog, categories, search |
-| 🛒 Cart Service | 8003 | `/health` | Cart management (Redis) |
-| 📋 Order Service | 8004 | `/health` | Order processing |
-| 💳 Payment Service | 8005 | `/health` | Payment handling |
-| 📧 Notification | 8006 | `/health` | Email/SMS (RabbitMQ consumer) |
+| Service            | Port | Health    | Description                          |
+| ------------------ | ---- | --------- | ------------------------------------ |
+| 🔀 API Gateway     | 8000 | `/health` | Request routing, auth, rate limiting |
+| 👤 User Service    | 8001 | `/health` | Registration, login, profiles        |
+| 📦 Product Service | 8002 | `/health` | Catalog, categories, search          |
+| 🛒 Cart Service    | 8003 | `/health` | Cart management (Redis)              |
+| 📋 Order Service   | 8004 | `/health` | Order processing                     |
+| 💳 Payment Service | 8005 | `/health` | Payment handling                     |
+| 📧 Notification    | 8006 | `/health` | Email/SMS (RabbitMQ consumer)        |
 
 ### Service Features
 
-| Feature | Service | Details |
-|---------|---------|---------|
-| JWT Auth | User | Token-based authentication with bcrypt |
-| Redis Cache | Product | Cache-first catalog reads |
-| Redis Storage | Cart | Ephemeral cart with 7-day TTL |
-| RabbitMQ Events | Order → Notification | Async order status updates |
-| Rate Limiting | Gateway | 1000 req/min per IP |
-| Chaos Endpoints | All | `/chaos/delay`, `/chaos/error` |
+| Feature         | Service              | Details                                |
+| --------------- | -------------------- | -------------------------------------- |
+| JWT Auth        | User                 | Token-based authentication with bcrypt |
+| Redis Cache     | Product              | Cache-first catalog reads              |
+| Redis Storage   | Cart                 | Ephemeral cart with 7-day TTL          |
+| RabbitMQ Events | Order → Notification | Async order status updates             |
+| Rate Limiting   | Gateway              | 1000 req/min per IP                    |
+| Chaos Endpoints | All                  | `/chaos/delay`, `/chaos/error`         |
 
 ---
 
 ## 🌐 Frontend Pages
 
-| Page | Route | Auth | Description |
-|------|-------|------|-------------|
-| 🏠 Home | `/` | ❌ | Hero, featured products, trending |
-| 📦 Products | `/products` | ❌ | Grid with search, filters, categories |
-| 🔍 Product Detail | `/products/[id]` | ❌ | Full product page with specs |
-| 📂 Categories | `/categories` | ❌ | Category grid with images |
-| 📂 Category Detail | `/categories/[slug]` | ❌ | Products by category |
-| 🔥 Deals | `/deals` | ❌ | Discounted products |
-| ✨ New Arrivals | `/new-arrivals` | ❌ | Latest products |
-| 🛒 Cart | `/cart` | ❌ | Shopping cart |
-| 💳 Checkout | `/checkout` | ✅ | Order placement |
-| 🔑 Login | `/login` | ❌ | Sign in |
-| 📝 Sign Up | `/signup` | ❌ | Registration |
-| 👤 Dashboard | `/dashboard` | ✅ | User profile |
-| 📋 Orders | `/orders` | ✅ | Order history |
-| 🔧 Admin | `/admin` | 🔑 | Admin panel |
+| Page               | Route                | Auth | Description                           |
+| ------------------ | -------------------- | ---- | ------------------------------------- |
+| 🏠 Home            | `/`                  | ❌   | Hero, featured products, trending     |
+| 📦 Products        | `/products`          | ❌   | Grid with search, filters, categories |
+| 🔍 Product Detail  | `/products/[id]`     | ❌   | Full product page with specs          |
+| 📂 Categories      | `/categories`        | ❌   | Category grid with images             |
+| 📂 Category Detail | `/categories/[slug]` | ❌   | Products by category                  |
+| 🔥 Deals           | `/deals`             | ❌   | Discounted products                   |
+| ✨ New Arrivals    | `/new-arrivals`      | ❌   | Latest products                       |
+| 🛒 Cart            | `/cart`              | ❌   | Shopping cart                         |
+| 💳 Checkout        | `/checkout`          | ✅   | Order placement                       |
+| 🔑 Login           | `/login`             | ❌   | Sign in                               |
+| 📝 Sign Up         | `/signup`            | ❌   | Registration                          |
+| 👤 Dashboard       | `/dashboard`         | ✅   | User profile                          |
+| 📋 Orders          | `/orders`            | ✅   | Order history                         |
+| 🔧 Admin           | `/admin`             | 🔑   | Admin panel                           |
 
 ---
 
@@ -301,11 +301,11 @@ make test-integration
 make test-coverage
 ```
 
-| Type | Directory | Requires Services |
-|------|-----------|-------------------|
-| Unit | `tests/unit/` | ❌ |
-| Integration | `tests/integration/` | ✅ |
-| E2E | Browser-based | ✅ |
+| Type        | Directory            | Requires Services |
+| ----------- | -------------------- | ----------------- |
+| Unit        | `tests/unit/`        | ❌                |
+| Integration | `tests/integration/` | ✅                |
+| E2E         | Browser-based        | ✅                |
 
 > 📖 See [Testing Guide](docs/development/testing.md) for details.
 
@@ -344,13 +344,13 @@ Copy `.env.example` to `.env` and configure:
 cp .env.example .env
 ```
 
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `SECRET_KEY` | — | JWT signing key (change in production!) |
-| `POSTGRES_USER` | postgres | Database user |
-| `POSTGRES_PASSWORD` | postgres | Database password |
-| `REDIS_URL` | redis://redis:6379/0 | Redis connection |
-| `RABBITMQ_URL` | amqp://guest:guest@rabbitmq:5672/ | RabbitMQ connection |
+| Variable            | Default                           | Description                             |
+| ------------------- | --------------------------------- | --------------------------------------- |
+| `SECRET_KEY`        | —                                 | JWT signing key (change in production!) |
+| `POSTGRES_USER`     | postgres                          | Database user                           |
+| `POSTGRES_PASSWORD` | postgres                          | Database password                       |
+| `REDIS_URL`         | redis://redis:6379/0              | Redis connection                        |
+| `RABBITMQ_URL`      | amqp://guest:guest@rabbitmq:5672/ | RabbitMQ connection                     |
 
 > 📖 See [`.env.example`](.env.example) for all variables.
 
@@ -372,6 +372,7 @@ docker compose logs user-service
 docker compose down -v
 docker compose up --build
 ```
+
 </details>
 
 <details>
@@ -383,6 +384,7 @@ docker compose up postgres -d
 sleep 5
 docker compose up -d
 ```
+
 </details>
 
 <details>
@@ -393,12 +395,14 @@ docker compose up -d
 lsof -i :8000
 kill -9 <PID>
 ```
+
 </details>
 
 <details>
 <summary>🔑 <b>Login returns 422 error</b></summary>
 
 The login endpoint expects JSON body: `{"email": "...", "password": "..."}`. Not form-encoded data.
+
 </details>
 
 ---
