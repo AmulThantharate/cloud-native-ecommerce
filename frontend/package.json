@@ -38,7 +38,7 @@
     "clsx": "^2.1.0",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
-    "framer-motion": "^11.2.0",
+    "framer-motion": "^12.38.0",
     "lucide-react": "^0.400.0",
     "zustand": "^4.5.0",
     "@tanstack/react-query": "^5.40.0",
